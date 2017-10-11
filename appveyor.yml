@@ -10,12 +10,11 @@ init:
   - 
     ps: "ls C:/Python*"
 install: 
-  - ps: ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
-    ps: "(new-object net.webclient).DownloadFile('https://bootstrap.pypa.io/get-pip.py', 'C:/get-pip.py')"
+    ps: "(new-object net.webclient).DownloadFile('http://bootstrap.pypa.io/get-pip.py', 'C:/get-pip.py')"
   - "%PYTHON%/python.exe C:/get-pip.py"
   - "%PYTHON%/Scripts/pip.exe install -e ."
   - 
-    ps: "Start-FileDownload ('https://ffmpeg.zeranoe.com/builds/win64/shared/ffmpeg-latest-win64-shared.7z') ffmpeg-shared.7z"
+    ps: "Start-FileDownload ('http://ffmpeg.zeranoe.com/builds/win64/shared/ffmpeg-latest-win64-shared.7z') ffmpeg-shared.7z"
   - "7z x ffmpeg-shared.7z > NULL"
   - "SET PATH=%cd%\\ffmpeg-latest-win64-shared\\bin;%PATH%"
 test_script: 
